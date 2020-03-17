@@ -34,7 +34,6 @@ public class ZuulApplication {
         config.addAllowedMethod("DELETE");
         config.addAllowedMethod("PATCH");
         source.registerCorsConfiguration("/**", config);
-
         return new CorsFilter(source);
     }
 }
