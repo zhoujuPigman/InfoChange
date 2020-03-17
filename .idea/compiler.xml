@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Zuul" />
         <module name="EurekaServer" />
       </profile>
     </annotationProcessing>
@@ -14,6 +15,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="EurekaServer" options="-parameters" />
       <module name="InfoChange" options="-parameters" />
+      <module name="Zuul" options="-parameters" />
     </option>
   </component>
 </project>
