@@ -1,0 +1,44 @@
+server:
+  port: 8763
+
+eureka:
+  instance:
+    instance-id: Security-model
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+spring:
+  application:
+    name: SpringSecurity-model
+  datasource:
+    url: jdbc:mysql://localhost:3306/info?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    suffix: .html
+    mode: HTML
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+
+# 自定义jwt key
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer  #JWT负载中拿到开头
+
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  type-aliases-package: cn.huanji.Sercurity.*.model
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: false

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.huanji.Security.dao.UsUserinfoMapper">
+
+    <resultMap id="powerList" type="cn.huanji.Security.model.UsPower">
+        <id property="id" jdbcType="BIGINT" column="id"/>
+        <result column="pid" jdbcType="BIGINT" property="pid"/>
+        <result column="powername" property="powername" jdbcType="VARCHAR"/>
+        <result column="powervalue" jdbcType="VARCHAR" property="powervalue"/>
+        <result property="type" jdbcType="BIGINT" column="type"/>
+        <result column="inco" jdbcType="VARCHAR" property="inco"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+    </resultMap>
+
+    <select id="getUsPowerByUserId" resultMap="cn.huanji.Security.dao.UsUserinfoMapper.powerList">
+        SELECT up.*
+        from
+        us_user_role uur
+        left join us_role ur on uur.roleId = ur.id
+        left join us_role_power urp on ur.id = urp.roleId
+        left join us_power up on urp.powerId = up.id
+        where
+        uur.userId = #{userId}
+        and up.id is not null
+        and up.id not in (
+            select
+            up.id
+            from
+                us_user_power uup
+                left join us_power up on uup.powerId = up.id
+            where
+                uup.type = -1
+                and uup.userId = #{userId}
+        )
+        union
+        select
+            up.*
+        FROM
+            us_user_power uup
+            left join us_power up on uup.powerId = up.id
+        where
+            uup.type = 1
+            and uup.userId = #{userId}
+    </select>
+</mapper>
