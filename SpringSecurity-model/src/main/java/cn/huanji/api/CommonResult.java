@@ -47,4 +47,32 @@ public class CommonResult<T> {
     public static <T> CommonResult<T> unauthorized(T data){
         return new CommonResult<T>(ResultCode.UNAUTHORIZED.getCode(),ResultCode.UNAUTHORIZED.getMsg(),data);
     }
+
+    /**
+     * 登录失败
+     */
+    public static <T> CommonResult<T> loginFail(T data){
+        return new CommonResult<T>(ResultCode.FAILED.getCode(),ResultCode.FAILED.getMsg(),data);
+    }
+
+    public static <T> CommonResult<T> loginSuccess(T data){
+        return new CommonResult<T>(ResultCode.SUCCESS.getCode(),ResultCode.SUCCESS.getMsg(),data);
+    }
+
+    /**
+     * 操作成功
+     * @param data
+     * @param <T>
+     * @return
+     */
+    public static <T> CommonResult<T> success(T data){
+        return new CommonResult<T>(ResultCode.SUCCESS.getCode(),ResultCode.SUCCESS.getMsg(),data);
+    }
+
+    /**
+     * 操作失败
+     */
+    public static <T> CommonResult<T> failed(T data){
+        return new CommonResult<T>(ResultCode.FAILED.getCode(),ResultCode.FAILED.getMsg(),data);
+    }
 }

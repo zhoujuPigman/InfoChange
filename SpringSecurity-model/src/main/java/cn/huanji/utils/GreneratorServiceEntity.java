@@ -27,7 +27,7 @@ public class GreneratorServiceEntity {
     public void generateCode(){
         String packageName = "cn.huanji.Security";
         boolean flag = false;
-        String tableName = "us_power";
+        String tableName = "us_userinfo";
         generateByTables(flag,packageName,tableName);
     }
 

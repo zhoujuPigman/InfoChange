@@ -58,8 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         HttpMethod.GET,
                         "/",
                         "/*.html",
-                        "/**/.css",
                         "/favicon.ico",
+                        "/**/*.css",
                         "/**/*.js",
                         "/swagger-resources/**",
                         "/v2/api-docs/**"

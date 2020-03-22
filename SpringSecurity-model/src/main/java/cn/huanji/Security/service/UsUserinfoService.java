@@ -26,4 +26,15 @@ public interface UsUserinfoService extends IService<UsUserinfo> {
      * 根据用户id查找用户权限
      */
     List<UsPower> getUspowerByUserId(String userId);
+
+
+    /**
+     * 登录
+     */
+    String login(String username,String password);
+
+    /**
+     * 注册
+     */
+    boolean register(UsUserinfo usUserinfo);
 }
